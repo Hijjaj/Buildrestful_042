@@ -21,34 +21,42 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class ProductServiceController {
+    //membuat hashmap untuk menyimpan data
    private static Map<String, Product> productRepo = new HashMap<>();
    static 
    {
+       //deklarasi isi hashmap
       Product honey = new Product();
       honey.setId("1");
       honey.setName("Honey");
       productRepo.put(honey.getId(), honey);
-      
+      //deklarasi isi hashmap
       Product almond = new Product();
       almond.setId("2");
       almond.setName("Almond");
       productRepo.put(almond.getId(), almond);
    }
-   
+   //membuat method delete data
    @RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE)
+   //melakukan pengaturan untuk delete berdasarkan id
    public ResponseEntity<Object> delete(@PathVariable("id") String id) 
    { 
+      //delete isi 
       productRepo.remove(id);
+      //tsmpilkan pesan dan status
       return new ResponseEntity<>("Product is deleted successsfully", HttpStatus.OK);
    }
-   
+   //membuat method edit data
    @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT)
+   //melakukan pengaturan untuk edit berdasarkan id
    public ResponseEntity<Object> updateProduct(@PathVariable("id") String id, @RequestBody Product product) 
    {
+      //jika id yang diedit belum ada maka tampilkan pesan error
       if(!productRepo.containsKey(id))
       { 
         return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);
       }
+      //jika id sudah ada maka edit data tersebut dan tampilkan pesan sukses dan status
       else
       {
         productRepo.remove(id);
@@ -57,22 +65,26 @@ public class ProductServiceController {
         return new ResponseEntity<>("Product is updated successsfully", HttpStatus.OK);
       }
    }
-   
+   //membuat method buat data
    @RequestMapping(value = "/products", method = RequestMethod.POST)
+   //melakukan pengaturan membuat data
    public ResponseEntity<Object> createProduct(@RequestBody Product product) 
    {
+      //jika id data yang dibuat sudah ada sebelumnya, maka tampilkan pesan error
       if (productRepo.containsKey(product.getId()))
       {
         return new ResponseEntity<>("Cannot add same id", HttpStatus.OK);
       }
+      //jika id belum ada maka tampilkan pesan sukses dan buat data
       else
       {
         productRepo.put(product.getId(), product);      
         return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED);
       }
    }
-   
+   //membuat jalan 
    @RequestMapping(value = "/products")
+   //mengimport Product
    public ResponseEntity<Object> getProduct() 
    {
       return new ResponseEntity<>(productRepo.values(), HttpStatus.OK);
