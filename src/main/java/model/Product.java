@@ -36,7 +36,7 @@ public class Product {
     }
 
     public void setTotal(String total) {
-        this.total = price*diskon;
+        this.total =price - price * diskon;
     }
 
    
