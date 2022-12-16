@@ -27,19 +27,31 @@ public class ProductServiceController {
    {
        //deklarasi isi hashmap
       Product honey = new Product();
+      //memberikan id
       honey.setId("1");
+      //memberikan nama
       honey.setName("Honey");
+      //memberikan harga
       honey.setPrice(10000);
+      //meberikan diskon
       honey.setDiskon(0.01);
+      //memberikan total
       honey.setTotal();
+      //menaruh berdasarkan id
       productRepo.put(honey.getId(), honey);
       //deklarasi isi hashmap
       Product almond = new Product();
+      //memberikan id
       almond.setId("2");
+      //memberikan nama
       almond.setName("Almond");
+      //memberikan harga
       almond.setPrice(15000);
+      //memberikan diskon
       almond.setDiskon(0.02);
+      //memberikan total
       almond.setTotal();
+      //menaruh berdasarkan id
       productRepo.put(almond.getId(), almond);
    }
    //membuat method delete data
@@ -49,7 +61,7 @@ public class ProductServiceController {
    { 
       //delete isi 
       productRepo.remove(id);
-      //tsmpilkan pesan dan status
+      //tampilkan pesan dan status
       return new ResponseEntity<>("Product is deleted successsfully", HttpStatus.OK);
    }
    //membuat method edit data
@@ -60,14 +72,19 @@ public class ProductServiceController {
       //jika id yang diedit belum ada maka tampilkan pesan error
       if(!productRepo.containsKey(id))
       { 
+        //tampilkan pesan dan status  
         return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);
       }
       //jika id sudah ada maka edit data tersebut dan tampilkan pesan sukses dan status
       else
       {
+          //hapus berdasarkan id
         productRepo.remove(id);
+        //memberikan id
         product.setId(id);
+        //menaruh id
         productRepo.put(id, product);
+        //menampilkan pesan dan status
         return new ResponseEntity<>("Product is updated successsfully", HttpStatus.OK);
       }
    }
@@ -79,12 +96,15 @@ public class ProductServiceController {
       //jika id data yang dibuat sudah ada sebelumnya, maka tampilkan pesan error
       if (productRepo.containsKey(product.getId()))
       {
+          //tampilkan pesan dan status
         return new ResponseEntity<>("Cannot add same id", HttpStatus.OK);
       }
       //jika id belum ada maka tampilkan pesan sukses dan buat data
       else
       {
-        productRepo.put(product.getId(), product);      
+          //dapatkan id
+        productRepo.put(product.getId(), product);
+        //tampilkan pesan dan status
         return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED);
       }
    }
@@ -93,6 +113,7 @@ public class ProductServiceController {
    //mengimport Product
    public ResponseEntity<Object> getProduct() 
    {
+       //tampilkan status
       return new ResponseEntity<>(productRepo.values(), HttpStatus.OK);
    }
 }
