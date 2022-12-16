@@ -30,7 +30,7 @@ public class ProductServiceController {
       honey.setId("1");
       honey.setName("Honey");
       honey.setPrice(10000);
-      honey.setDiskon(10);
+      honey.setDiskon(0.01);
       honey.setTotal();
       productRepo.put(honey.getId(), honey);
       //deklarasi isi hashmap
@@ -38,7 +38,7 @@ public class ProductServiceController {
       almond.setId("2");
       almond.setName("Almond");
       almond.setPrice(15000);
-      almond.setDiskon(20);
+      almond.setDiskon(0.02);
       almond.setTotal();
       productRepo.put(almond.getId(), almond);
    }
