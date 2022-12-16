@@ -37,7 +37,7 @@ public class Product {
     }
 //mengatur fungsi setTotal
     public void setTotal() {
-        this.total = (int) (price - price * diskon);
+        this.total = total ;
     }
 //mengatur fungsi getId
     public String getId() {
@@ -54,5 +54,9 @@ public class Product {
 //mengatur fungsi setName
     public void setName(String name) {
       this.name = name;
+    }
+
+    public void setTotal(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
