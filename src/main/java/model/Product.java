@@ -12,7 +12,7 @@ public class Product {
    private String id;
    private String name;
    private int price;
-   private int diskon;
+   private double diskon;
    private int total;
 
     public int getPrice() {
@@ -23,11 +23,11 @@ public class Product {
         this.price = price;
     }
 
-    public int getDiskon() {
+    public double getDiskon() {
         return diskon;
     }
 
-    public void setDiskon(int diskon) {
+    public void setDiskon(double diskon) {
         this.diskon = diskon;
     }
 
@@ -35,21 +35,24 @@ public class Product {
         return total;
     }
 
-    public void setTotal(String total) {
-        this.total =price - price * diskon;
+    public void setTotal() {
+        this.total = (int) (price - price * diskon);
     }
 
    
-   public String getId() {
+    public String getId() {
       return id;
-   }
-   public void setId(String id) {
+    }
+   
+    public void setId(String id) {
       this.id = id;
-   }
-   public String getName() {
+    }
+   
+    public String getName() {
       return name;
-   }
-   public void setName(String name) {
+    }
+   
+    public void setName(String name) {
       this.name = name;
-   }
+    }
 }

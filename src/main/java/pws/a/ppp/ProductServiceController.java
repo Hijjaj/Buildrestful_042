@@ -29,11 +29,17 @@ public class ProductServiceController {
       Product honey = new Product();
       honey.setId("1");
       honey.setName("Honey");
+      honey.setPrice(10000);
+      honey.setDiskon(10);
+      honey.setTotal();
       productRepo.put(honey.getId(), honey);
       //deklarasi isi hashmap
       Product almond = new Product();
       almond.setId("2");
       almond.setName("Almond");
+      almond.setPrice(15000);
+      almond.setDiskon(20);
+      almond.setTotal();
       productRepo.put(almond.getId(), almond);
    }
    //membuat method delete data
